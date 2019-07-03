@@ -12,7 +12,7 @@ module MultilingualAttributes
         end
 
         define_method "#{name}" do
-          send(name.to_s+"_#{I18n.locale.to_s}")
+          send(name.to_s+"_#{I18n.locale.to_s[0, 2]}")
         end
       end
     end
