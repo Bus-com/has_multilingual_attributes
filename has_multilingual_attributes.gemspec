@@ -9,9 +9,12 @@ Gem::Specification.new do |gem|
   gem.homepage      = 'https://github.com/cawel/has_multilingual_attributes'
   gem.version       = HasMultilingualAttributes::VERSION
   gem.date          = '2013-09-13'
-  gem.authors       = ["Martin Carel", "Hugo Frappier"]
-  gem.email         = 'cawel00@yahoo.com'
+  gem.authors       = ["François Beausoleil", "Martin Carel", "Hugo Frappier"]
+  gem.email         = 'francois@teksol.info'
   gem.files         = `git ls-files`.split("\n")
   gem.require_paths = ["lib"]
   gem.license       = 'MIT'
+
+  gem.add_dependency "i18n", "~> 1.6.0"
+  gem.add_development_dependency "activerecord", "> 5.0"
 end
