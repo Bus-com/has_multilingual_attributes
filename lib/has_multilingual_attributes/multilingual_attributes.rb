@@ -6,13 +6,13 @@ module MultilingualAttributes
     def has_multilingual_attributes(*names)
       names.each do |name|
         I18n.available_locales.each do |locale|
-          define_singleton_method "find_by_#{name.to_s}" do |name_param|
-            send("find_by_#{name}_#{locale}".to_sym, name_param)
+          define_singleton_method "find_by_#{name.to_s}" do |value|
+            find_by(:"#{name}_#{locale}" => value)
           end
         end
 
         define_method "#{name}" do
-          send(name.to_s+"_#{I18n.locale.to_s[0, 2]}")
+          public_send("#{name}_#{I18n.locale.to_s[0, 2]}")
         end
       end
     end
