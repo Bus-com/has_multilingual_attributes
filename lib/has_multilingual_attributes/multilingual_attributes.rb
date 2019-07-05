@@ -5,10 +5,8 @@ module MultilingualAttributes
     # defines virtual attribute getters for the given attribute names
     def has_multilingual_attributes(*names)
       names.each do |name|
-        I18n.available_locales.each do |locale|
-          define_singleton_method "find_by_#{name.to_s}" do |value|
-            find_by(:"#{name}_#{locale}" => value)
-          end
+        define_singleton_method "find_by_#{name}" do |value|
+          find_by(:"#{name}_#{I18n.locale.to_s[0, 2]}" => value)
         end
 
         define_method "#{name}" do
